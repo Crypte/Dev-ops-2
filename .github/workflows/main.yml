@@ -36,7 +36,7 @@ jobs:
         with:
           context: ./simple-api
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api-backend:latest
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: ${{ github.ref == 'refs/heads/master' }}
 
       # Build and push database image
       - name: Build image and push database
@@ -44,6 +44,8 @@ jobs:
         with:
           context: ./database 
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-database:latest
+          push: ${{ github.ref == 'refs/heads/master' }}
+
 
       # Build and push httpd image
       - name: Build image and push httpd
@@ -51,6 +53,8 @@ jobs:
         with:
           context: ./http-server
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-http-server:latest
+          push: ${{ github.ref == 'refs/heads/master' }}
+
 
 
       
