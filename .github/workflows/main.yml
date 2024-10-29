@@ -22,7 +22,7 @@ jobs:
           cd simple-api
           mvn clean verify
       - name : sonarcloud
-        run : mvn -B verify sonar:sonar -Dsonar.projectKey=Dev-ops-2 -Dsonar.organization=Lowdn -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
+        run : mvn -B verify sonar:sonar -Dsonar.projectKey=Dev-ops-2 -Dsonar.organization=Lowdn -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.branch.name=master --file ./simple-api/pom.xml
 
   build-and-push-docker-image:
     needs: test-backend
